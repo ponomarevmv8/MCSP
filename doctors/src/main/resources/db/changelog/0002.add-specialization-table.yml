@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - changeSet:
+      id: createSpecializationTable
+      author: Maxim Ponomarev
+      changes:
+        - createTable:
+            tableName: specialization
+            columns:
+              - column:
+                  name: specialization_id
+                  type: BIGINT
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: specialization_name
+                  type: VARCHAR(255)

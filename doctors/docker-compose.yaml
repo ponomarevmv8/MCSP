@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+    postgres:
+      image: postgres:15.1-alpine
+      container_name: mcsp-db
+      environment:
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: postgres
+        POSTGRES_DB: mcsp
+      ports:
+        - '5432:5432'
+#      volumes:
+#        - db-data:/var/lib/postgresql/data
+

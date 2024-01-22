@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - changeSet:
+      id: createPositionTable
+      author: Maxim Ponomarev
+      changes:
+        - createTable:
+            tableName: position
+            columns:
+              - column:
+                  name: position_id
+                  type: BIGINT
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: position_name
+                  type: VARCHAR(255)

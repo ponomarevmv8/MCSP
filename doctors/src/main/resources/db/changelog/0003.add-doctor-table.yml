@@ -1,0 +1,45 @@
+databaseChangeLog:
+  - changeSet:
+      id: createDoctorTable
+      author: yourname
+      changes:
+        - createTable:
+            tableName: doctor
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: first_name
+                  type: VARCHAR(255)
+              - column:
+                  name: last_name
+                  type: VARCHAR(255)
+              - column:
+                  name: position_id
+                  type: BIGINT
+                  constraints:
+                    foreignKey:
+                      references:
+                        tableName: position
+                        columnNames: position_id
+              - column:
+                  name: work_experience
+                  type: INT
+              - column:
+                  name: description
+                  type: TEXT
+              - column:
+                  name: photo
+                  type: VARCHAR(255)
+              - column:
+                  name: specialization_id
+                  type: BIGINT
+                  constraints:
+                    foreignKey:
+                      references:
+                        tableName: specialization
+                        columnNames: specialization_id

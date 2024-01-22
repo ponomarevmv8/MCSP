@@ -1,0 +1,20 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: doctors
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/mcsp?currentSchema=doctors
+    username: postgres
+    password: postgres
+  liquibase:
+    change-log: classpath:/db/db.changelog-master.yml
+    enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        default_schema: doctors
