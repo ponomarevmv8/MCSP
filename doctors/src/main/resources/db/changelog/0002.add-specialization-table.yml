@@ -7,11 +7,10 @@ databaseChangeLog:
             tableName: specialization
             columns:
               - column:
-                  name: specialization_id
-                  type: BIGINT
+                  name: id
+                  type: serial
                   constraints:
                     primaryKey: true
-                    nullable: false
               - column:
-                  name: specialization_name
+                  name: name
                   type: VARCHAR(255)

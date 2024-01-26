@@ -1,0 +1,136 @@
+databaseChangeLog:
+  - changeSet:
+      id: insertDemoData
+      author: Maxim Ponomarev
+      changes:
+        - insert:
+            tableName: position
+            columns:
+              - column:
+                  name: name
+                  value: 'Senior Doctor'
+        - insert:
+            tableName: position
+            columns:
+              - column:
+                  name: name
+                  value: 'Junior Doctor'
+        - insert:
+            tableName: position
+            columns:
+              - column:
+                  name: name
+                  value: 'Nurse'
+
+        - insert:
+            tableName: specialization
+            columns:
+              - column:
+                  name: name
+                  value: 'Cardiology'
+        - insert:
+            tableName: specialization
+            columns:
+              - column:
+                  name: name
+                  value: 'Orthopedics'
+        - insert:
+            tableName: specialization
+            columns:
+              - column:
+                  name: name
+                  value: 'Pediatrics'
+
+        - insert:
+            tableName: doctor
+            columns:
+              - column:
+                  name: first_name
+                  value: 'John'
+              - column:
+                  name: last_name
+                  value: 'Doe'
+              - column:
+                  name: work_experience
+                  value: 5
+              - column:
+                  name: description
+                  value: 'Senior Doctor with expertise in Cardiology'
+              - column:
+                  name: photo
+                  value: 'photo1.jpg'
+
+        - insert:
+            tableName: doctor
+            columns:
+              - column:
+                  name: first_name
+                  value: 'Jane'
+              - column:
+                  name: last_name
+                  value: 'Smith'
+              - column:
+                  name: work_experience
+                  value: 2
+              - column:
+                  name: description
+                  value: 'Junior Doctor with focus on Pediatrics'
+              - column:
+                  name: photo
+                  value: 'photo2.jpg'
+
+        - insert:
+            tableName: doctor
+            columns:
+              - column:
+                  name: first_name
+                  value: 'Emma'
+              - column:
+                  name: last_name
+                  value: 'Johnson'
+              - column:
+                  name: work_experience
+                  value: 3
+              - column:
+                  name: description
+                  value: 'Nurse specializing in Orthopedics'
+              - column:
+                  name: photo
+                  value: 'photo3.jpg'
+
+        - insert:
+            tableName: doctors_positions
+            columns:
+              - column:
+                  name: doctor_id
+                  value: 1
+              - column:
+                  name: position_id
+                  value: 1
+        - insert:
+            tableName: doctors_positions
+            columns:
+              - column:
+                  name: doctor_id
+                  value: 2
+              - column:
+                  name: position_id
+                  value: 2
+        - insert:
+            tableName: doctors_positions
+            columns:
+              - column:
+                  name: doctor_id
+                  value: 3
+              - column:
+                  name: position_id
+                  value: 3
+        - insert:
+            tableName: doctors_specializations
+            columns:
+              - column:
+                  name: doctor_id
+                  value: 1
+              - column:
+                  name: specialization_id
+                  value: 1

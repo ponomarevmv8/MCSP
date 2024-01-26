@@ -7,11 +7,10 @@ databaseChangeLog:
             tableName: position
             columns:
               - column:
-                  name: position_id
-                  type: BIGINT
+                  name: id
+                  type: serial
                   constraints:
                     primaryKey: true
-                    nullable: false
               - column:
-                  name: position_name
+                  name: name
                   type: VARCHAR(255)

@@ -1,31 +1,22 @@
 databaseChangeLog:
   - changeSet:
       id: createDoctorTable
-      author: yourname
+      author: Maxim Ponomarev
       changes:
         - createTable:
             tableName: doctor
             columns:
               - column:
                   name: id
-                  type: BIGINT
+                  type: serial
                   constraints:
                     primaryKey: true
-                    nullable: false
               - column:
                   name: first_name
                   type: VARCHAR(255)
               - column:
                   name: last_name
                   type: VARCHAR(255)
-              - column:
-                  name: position_id
-                  type: BIGINT
-                  constraints:
-                    foreignKey:
-                      references:
-                        tableName: position
-                        columnNames: position_id
               - column:
                   name: work_experience
                   type: INT
@@ -35,11 +26,88 @@ databaseChangeLog:
               - column:
                   name: photo
                   type: VARCHAR(255)
+
+  - changeSet:
+      id: createDoctorPositionSpecializationTable
+      author: Maxim Ponomarev
+      changes:
+        - createTable:
+            tableName: doctors_positions
+            columns:
+              - column:
+                  name: doctor_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: position_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+            primaryKey:
+              columns:
+                - column:
+                    name: doctor_id
+                - column:
+                    name: position_id
+            constraints:
+              - foreignKey:
+                  name: fk_doctors_positions_doctors
+                  baseTableName: doctors_positions
+                  baseColumnNames:
+                    - doctor_id
+                  referencedTableName: doctor
+                  referencedColumnNames:
+                     - id
+                  onDelete: CASCADE
+                  onUpdate: NO ACTION
+              - foreignKey:
+                  name: fk_doctors_positions_position
+                  baseTableName: doctors_positions
+                  baseColumnNames:
+                    - position_id
+                  referencedTableName: position
+                  referencedColumnNames:
+                    - id
+                  onDelete: CASCADE
+                  onUpdate: NO ACTION
+        - createTable:
+            tableName: doctors_specializations
+            columns:
+              - column:
+                  name: doctor_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
               - column:
                   name: specialization_id
                   type: BIGINT
                   constraints:
-                    foreignKey:
-                      references:
-                        tableName: specialization
-                        columnNames: specialization_id
+                    nullable: false
+            primaryKey:
+              columns:
+                - column:
+                    name: doctor_id
+                - column:
+                    name: specialization_id
+            constraints:
+              - foreignKey:
+                  name: fk_doctors_specializations_doctors
+                  baseTableName: doctors_specializations
+                  baseColumnNames:
+                    - doctor_id
+                  referencedTableName: doctor
+                  referencedColumnNames:
+                    - id
+                  onDelete: CASCADE
+                  onUpdate: NO ACTION
+              - foreignKey:
+                  name: fk_doctors_specializations_specializations
+                  baseTableName: doctors_specializations
+                  baseColumnNames:
+                    - specialization_id
+                  referencedTableName: specialization
+                  referencedColumnNames:
+                    - id
+                  onDelete: CASCADE
+                  onUpdate: NO ACTION
