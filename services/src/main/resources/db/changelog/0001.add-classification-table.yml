@@ -1,0 +1,19 @@
+databaseChangeLog:
+  - changeSet:
+      id: createClassificationTable
+      author: Maxim Ponomarev
+      changes:
+        - createTable:
+            tableName: classification
+            columns:
+              - column:
+                  name: id
+                  type: serial
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: parent
+                  type: bigint
