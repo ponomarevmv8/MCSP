@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: createServiceTable
+      author: Maxim Ponomarev
+      changes:
+        - createTable:
+            tableName: service
+            columns:
+              - column:
+                  name: id
+                  type: SERIAL
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: prices
+                  type: DOUBLE
+              - column:
+                  name: classification_id
+                  type: BIGINT
+                  constraints:
+                    foreignKeyName: fk_classifications
+                    referencedTableName: classification
+                    referencedColumnNames: id
