@@ -39,4 +39,9 @@ public class ServiceController {
         serviceService.delete(id);
     }
 
+    @PostMapping("/list")
+    public List<ServiceDTO> createList(@RequestBody List<ServiceDTO> serviceDTOS) {
+        return serviceService.createList(serviceDTOS);
+    }
+
 }

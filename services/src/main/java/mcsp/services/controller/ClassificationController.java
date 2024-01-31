@@ -2,7 +2,9 @@ package mcsp.services.controller;
 
 import lombok.RequiredArgsConstructor;
 import mcsp.services.dto.ClassificationDTO;
+import mcsp.services.dto.ServiceDTO;
 import mcsp.services.service.ClassificationService;
+import mcsp.services.service.ServiceService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,6 +15,7 @@ import java.util.List;
 public class ClassificationController {
 
     private final ClassificationService classificationService;
+    private final ServiceService serviceService;
 
 
     @GetMapping("/{id}")
@@ -40,4 +43,13 @@ public class ClassificationController {
         classificationService.delete(id);
     }
 
+    @GetMapping("/{classificationId}/services")
+    public List<ServiceDTO> getAllServiceByIdClassification(@PathVariable Long classificationId) {
+        return serviceService.getAllServiceByIdClassification(classificationId);
+    }
+
+    @DeleteMapping("/{id}/services")
+    public void deleteAllServicesByClassificationId(@PathVariable Long id) {
+        serviceService.deleteAllServiceByIdClassification(id);
+    }
 }
