@@ -3,22 +3,14 @@ server:
 spring:
   application:
     name: doctors
-  datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/mcsp?currentSchema=doctors
-    username: postgres
-    password: postgres
-  liquibase:
-    change-log: classpath:/db/db.changelog-master.yml
-    enabled: true
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-    properties:
-      hibernate:
-        default_schema: doctors
-
-hibernate:
-  hbm2ddl:
-    auto: update
+  config:
+    import: 'consul:'
+  cloud:
+    consul:
+      port: 8500
+      host: localhost
+      discovery:
+        instance-id: doctors-i1
+      config:
+        data-key: data
+        format: yaml

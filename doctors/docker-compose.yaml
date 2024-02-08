@@ -17,3 +17,9 @@ services:
       volumes:
         - db-data:/var/lib/postgresql/data
 
+    consul:
+      container_name: consul-mcsp
+      image: hashicorp/consul:latest
+      ports:
+        - '8500:8500'
+

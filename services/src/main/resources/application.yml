@@ -3,23 +3,34 @@ server:
 spring:
   application:
     name: services
-  datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/mcsp?currentSchema=services
-    username: postgres
-    password: postgres
-  liquibase:
-    enabled: true
-    change-log: classpath:/db/db.changelog-master.yml
-  jpa:
-    show-sql: true
-    hibernate:
-      ddl-auto: update
-    properties:
-      hibernate:
-        default_schema: services
-
-
-hibernate:
-  hbm2ddl:
-    auto: update
+  config:
+    import: 'consul:'
+  cloud:
+    consul:
+      port: 8500
+      host: localhost
+      discovery:
+        instance-id: services-i1
+      config:
+        format: yaml
+        data-key: data
+#  datasource:
+#    driver-class-name: org.postgresql.Driver
+#    url: jdbc:postgresql://localhost:5432/mcsp?currentSchema=services
+#    username: postgres
+#    password: postgres
+#  liquibase:
+#    enabled: true
+#    change-log: classpath:/db/db.changelog-master.yml
+#  jpa:
+#    show-sql: true
+#    hibernate:
+#      ddl-auto: update
+#    properties:
+#      hibernate:
+#        default_schema: services
+#
+#
+#hibernate:
+#  hbm2ddl:
+#    auto: update
